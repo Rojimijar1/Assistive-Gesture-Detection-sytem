@@ -1,0 +1,228 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f172a; /* Deep slate background */
+    color: #f8fafc;
+    font-family: 'Inter', -apple-system, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/*logo*/
+.logo{
+    display: flex;
+    justify-content: flex-start;
+    height: 50px;
+    width: 100px;
+    margin-right: 60rem;
+    float: left;
+}
+
+.assi{
+    font-size: 10px;
+    color: #38bdf8;
+    font-weight: bold;
+    margin-top: 1.1rem;
+}
+/* UI Overlay */
+#ui {
+    text-align: center;
+    z-index: 10;
+    background: rgba(30, 41, 59, 0.7);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.instruction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    width:23rem;
+    border: 2px solid rgba(20, 236, 218, 0.425);
+    border-radius: 25px;
+    margin-top: 0.9rem;
+    transition: all 0.1s ease-in-out;
+    animation: pulse 1s infinite alternate;
+    box-shadow: 10px 10px 60px rgba(6, 80, 190, 0.493) inset;
+}
+
+@keyframes pulse{
+   100%{transform:scale(1.1)}
+
+}
+.instruction p{
+     font-size: 0.9rem;
+    color: #94a3b8;
+    font-weight: bold;
+}
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* The Virtual Cursor */
+#cursor {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    background: rgba(56, 189, 248, 0.2); /* Sky blue glow */
+    border: 2px solid #38bdf8;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    /* Smoothing the visual transform */
+    transition: width 0.15s, height 0.15s, background-color 0.15s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Small dot in center of cursor */
+#cursor::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #38bdf8;
+    border-radius: 50%;
+}
+
+/* Click Animation State */
+#cursor.clicking {
+    background: rgba(248, 113, 113, 0.4); /* Red glow on click */
+    border-color: #f87171;
+    width: 18px;
+    height: 18px;
+}
+
+/* Hidden Camera Video */
+#input_video {
+    display: none; /* Keep hidden to look like a clean app */
+}
+
+/* Optional: Small preview in corner if you want it visible */
+.video-preview {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    height: 150px;
+    border-radius: 12px;
+    border: 2px solid #0447a5;
+    transform: scaleX(-1); /* Mirror the video */
+    object-fit: cover;
+}
+
+#playground {
+    margin-top: 2rem;
+    z-index: 5;
+    width: 80%;
+    max-width: 600px;
+}
+
+.card {
+    background: rgba(30, 41, 59, 0.5);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.test-btn {
+    padding: 15px;
+    background: #1e293b;
+    border: 2px solid #334155;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#video-preview-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 240px; 
+    border-radius: 12px;
+    overflow: hidden;
+    transform: scaleX(-1); /* Mirrors the view */
+}
+
+#output_canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#input_video {
+    display: none; /* We draw the video onto the canvas instead */
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* This is the key: making the button react when the virtual cursor is over it */
+.test-btn:hover {
+    border-color: #38bdf8;
+    background: #0f172a;
+}
+
+/* Modal Styling */
+#custom-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20000; /* Sit above everything */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#custom-modal.modal-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #38bdf8;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+.modal-content h2 { margin-bottom: 10px; color: #38bdf8; }
+.modal-content p { margin-bottom: 20px; color: #94a3b8; }

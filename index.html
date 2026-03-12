@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touchless Hand Navigation</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="logo">
+        <img src="logo.png" alt="App Logo" class="logo-image">
+        <p class = "assi">Assi Bhai</p>
+        </div>
+    <div id="ui">
+        <h1>Hi, I'm the Assistive Gesture Mouse</h1>
+    </div>
+    <div class="instruction">
+        <p>Use your index finger to move | Pinch to click</p>
+    </div>
+    <div id="cursor"></div>
+    <div id="video-preview-container">
+    <video id="input_video"></video>
+    <canvas id="output_canvas"></canvas> </div>
+    <div id="playground">
+    <div class="card">
+        <h3>Test Your Gestures</h3>
+        <p>Try to click the buttons below using a pinch gesture.</p>
+        
+        <div class="button-grid">
+            <button class="test-btn" onclick="alert(' Hi there, you clicked button 1!')">Option A</button>
+            <button class="test-btn" onclick="alert(' Hi there, you clicked button 2!')">Option B</button>
+            <button class="test-btn" onclick="changeToRandomColor(this)">Change Color</button>
+            <button class="test-btn" onclick="location.reload()">Reset App</button>
+        </div>
+    </div>
+</div>
+
+<div id="custom-modal" class="modal-hidden">
+    <div class="modal-content">
+        <h2 id="modal-title">Action Successful</h2>
+        <p id="modal-message">You clicked a button using gestures!</p>
+        <button class="test-btn" onclick="closeModal()">OK, Got it</button>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
