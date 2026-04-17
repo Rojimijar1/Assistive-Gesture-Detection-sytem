@@ -15,7 +15,8 @@ The **Assistive Gesture Detection System** is a web-based application that detec
 * Lightweight and fast performance
 
 ---
-![Gesture Demo](
+## Project Demo
+![Gesture Demo](project.png)
 ## 🛠️ Technologies Used
 
 * **HTML** – Structure of the web application
